@@ -28,10 +28,11 @@ class Post(db.Model):
 
     def __repr__(self):
         return f'<Post {self.title}>'
-    
+#this is homepage route    
 @app.route('/')
 def hello_world():
-    return render_template('index.html')
+    posts = Post.query.all()
+    return render_template('index.html', posts=posts)
 
 @app.route('/about')
 def about () :
